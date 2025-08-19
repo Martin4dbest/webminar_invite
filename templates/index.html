@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI-powered Customer Service & Sales Webinar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-0 p-0 bg-gray-50">
+
+  <!-- Hero Section (Full Image, fully visible) -->
+  <section class="w-full">
+    <img src="{{ url_for('static', filename='img/web2.JPG') }}" 
+         alt="Webinar Background" 
+         class="w-full h-auto object-contain">
+  </section>
+
+  <!-- Headline & Register Button Section -->
+  <section class="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between bg-gray-50">
+    <!-- Headline -->
+    <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-center md:text-left leading-snug drop-shadow-lg px-4 py-2">
+      <span class="text-yellow-400">SAI: AI-Powered</span> 
+      <span class="text-blue-400">Customer Service</span> 
+      <span class="text-yellow-400">and</span> 
+      <span class="text-blue-400">Sales Webinar</span>
+    </h1>
+
+
+
+    <!-- Register Button -->
+    <button id="registerBtn" 
+            class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-yellow-500 transition transform hover:scale-105">
+      Register Now
+    </button>
+  </section>
+
+  <!-- Registration Form -->
+  <section id="formSection" class="hidden max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 mt-8 mb-12">
+    <h2 class="text-2xl font-bold mb-6 text-center text-indigo-700">Register for the Webinar</h2>
+    <form id="webinarForm" action="https://formspree.io/f/mqalvebz" method="POST" class="space-y-4">
+      <input type="text" name="name" placeholder="Full Name" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <input type="text" name="phone" placeholder="Phone Number (optional)" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <input type="text" name="company" placeholder="Company / Organization (optional)" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <select name="source" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <option value="">How did you hear about us?</option>
+        <option>Email</option>
+        <option>Social Media</option>
+        <option>Friend</option>
+        <option>Other</option>
+      </select>
+      <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold shadow hover:bg-indigo-700 transition transform hover:scale-105">
+        ✅ Submit Registration
+      </button>
+    </form>
+    <p id="successMsg" class="hidden text-green-600 font-semibold mt-6 text-center">
+      🎉 Thank you for registering! Check your email for confirmation.
+    </p>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    const registerBtn = document.getElementById("registerBtn");
+    const formSection = document.getElementById("formSection");
+    const form = document.getElementById("webinarForm");
+    const successMsg = document.getElementById("successMsg");
+
+    // Show form on button click
+    registerBtn.addEventListener("click", () => {
+      formSection.classList.remove("hidden");
+      window.scrollTo({ top: formSection.offsetTop, behavior: "smooth" });
+    });
+
+    // Form submission
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMsg.classList.remove("hidden");
+          successMsg.scrollIntoView({ behavior: "smooth" });
+        } else {
+          alert("⚠️ Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        alert("⚠️ Network error. Please check your connection.");
+      }
+    });
+  </script>
+</body>
+</html>
