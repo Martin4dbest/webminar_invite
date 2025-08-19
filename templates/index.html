@@ -8,35 +8,33 @@
 </head>
 <body class="m-0 p-0 bg-gray-50">
 
-  <!-- Hero Section (Full Image, fully visible) -->
+  <!-- Hero Section (Full Image, responsive) -->
   <section class="w-full">
     <img src="{{ url_for('static', filename='img/web2.JPG') }}" 
          alt="Webinar Background" 
-         class="w-full h-auto object-contain">
+         class="w-full max-h-[500px] sm:max-h-[600px] md:max-h-[700px] lg:max-h-[800px] object-cover">
   </section>
 
   <!-- Headline & Register Button Section -->
-  <section class="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between bg-gray-50">
+  <section class="max-w-6xl mx-auto px-4 py-6 sm:py-8 md:py-12 flex flex-col md:flex-row items-center justify-between bg-gray-50">
     <!-- Headline -->
-    <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-center md:text-left leading-snug drop-shadow-lg px-4 py-2">
+    <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center md:text-left leading-snug drop-shadow-lg px-4 py-2">
       <span class="text-yellow-400">SAI: AI-Powered</span> 
       <span class="text-blue-400">Customer Service</span> 
       <span class="text-yellow-400">and</span> 
       <span class="text-blue-400">Sales Webinar</span>
     </h1>
 
-
-
     <!-- Register Button -->
     <button id="registerBtn" 
-            class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-yellow-500 transition transform hover:scale-105">
+            class="mt-4 md:mt-0 px-5 py-2 sm:px-6 sm:py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-yellow-500 transition transform hover:scale-105">
       Register Now
     </button>
   </section>
 
-  <!-- Registration Form -->
-  <section id="formSection" class="hidden max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 mt-8 mb-12">
-    <h2 class="text-2xl font-bold mb-6 text-center text-indigo-700">Register for the Webinar</h2>
+  <!-- Registration Form (Responsive, minimal extra space) -->
+  <section id="formSection" class="hidden max-w-md sm:max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-6 sm:p-8 mt-6 mb-12">
+    <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-indigo-700">Register for the Webinar</h2>
     <form id="webinarForm" action="https://formspree.io/f/mqalvebz" method="POST" class="space-y-4">
       <input type="text" name="name" placeholder="Full Name" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
       <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -49,11 +47,11 @@
         <option>Friend</option>
         <option>Other</option>
       </select>
-      <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold shadow hover:bg-indigo-700 transition transform hover:scale-105">
+      <button type="submit" class="w-full bg-indigo-600 text-white py-2 sm:py-3 rounded-lg font-semibold shadow hover:bg-indigo-700 transition transform hover:scale-105">
         ✅ Submit Registration
       </button>
     </form>
-    <p id="successMsg" class="hidden text-green-600 font-semibold mt-6 text-center">
+    <p id="successMsg" class="hidden text-green-600 font-semibold mt-4 sm:mt-6 text-center">
       🎉 Thank you for registering! Check your email for confirmation.
     </p>
   </section>
