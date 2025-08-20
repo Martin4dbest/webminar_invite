@@ -8,11 +8,11 @@
 </head>
 <body class="m-0 p-0 bg-gray-50">
 
-  <!-- Hero Section (Full Image, responsive) -->
-  <section class="w-full">
+  <!-- Hero Section (Balanced Image, no cropping) -->
+  <section class="w-full bg-black flex justify-center">
     <img src="{{ url_for('static', filename='img/web2.JPG') }}" 
          alt="Webinar Background" 
-         class="w-full max-h-[400px] sm:max-h-[450px] md:max-h-[700px] lg:max-h-[800px] object-cover">
+         class="w-full max-h-[320px] sm:max-h-[380px] md:max-h-[500px] lg:max-h-[550px] object-contain">
   </section>
 
   <!-- Headline & Register Button Section -->
@@ -25,14 +25,14 @@
       <span class="text-blue-400">Sales Webinar</span>
     </h1>
 
-    <!-- Register Button -->
+    <!-- Register Button (Red version) -->
     <button id="registerBtn" 
-            class="mt-4 md:mt-0 px-5 py-2 sm:px-6 sm:py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-yellow-500 transition transform hover:scale-105">
+            class="mt-4 md:mt-0 px-5 py-2 sm:px-6 sm:py-3 bg-red-500 text-white font-semibold rounded-lg shadow hover:bg-red-600 transition transform hover:scale-105">
       Register Now
     </button>
   </section>
 
-  <!-- Registration Form (Responsive, minimal extra space) -->
+  <!-- Registration Form -->
   <section id="formSection" class="hidden max-w-md sm:max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-6 sm:p-8 mt-6 mb-12">
     <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-indigo-700">Register for the Webinar</h2>
     <form id="webinarForm" action="https://formspree.io/f/mqalvebz" method="POST" class="space-y-4">
@@ -55,7 +55,7 @@
       </button>
     </form>
     <p id="successMsg" class="hidden text-green-600 font-semibold mt-4 sm:mt-6 text-center">
-      🎉 Thank you for registering! Check your email for confirmation.
+      🎉 Thank you for registering!
     </p>
   </section>
 
